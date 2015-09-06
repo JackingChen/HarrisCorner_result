@@ -37,6 +37,7 @@ frame = imread('data/Im.jpg');
 I = double(frame);
 figure(1);
 imagesc(frame);
+axis off;
 [xmax, ymax,ch] = size(I);
 xmin = 1;
 ymin = 1;
@@ -61,6 +62,7 @@ Ixy = conv2(Ix.*Iy, g,'same'); % calculate Ixy
 %% visualize Ixy
 figure(2);
 imagesc(Ixy);
+axis off;
 
 %%%%%%% Demo Check Point -------------------
 
@@ -102,4 +104,5 @@ figure(3)
 imagesc(uint8(I));
 hold on;
 plot(c1,r1,'or');
+axis off;
 return;
