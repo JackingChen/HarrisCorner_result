@@ -62,6 +62,9 @@ Ixy = conv2(Ix.*Iy, g,'same'); % calculate Ixy
 figure(2);
 imshow(Ixy);
 
+%%%%%%% Demo Check Point -------------------
+
+
 %%%%%
 % get corner response function R = det(M)-alpha*trace(M)^2 
 % [Your Code here] 
@@ -78,16 +81,17 @@ MX = ordfilt2(R,sze^2,ones(sze));
 %%%%%
 % find local maximum.
 % [Your Code here] 
-R11 = (R==MX)&(R>Thrshold); 
+RBinary = (R==MX)&(R>Thrshold); 
 %%%%%
 
 
 %% get location of corner points not along image's edges
-count=sum(sum(R11(5:size(R11,1)-5,5:size(R11,2)-5)));   %How many interest points, avoid the image's edge   
+offe = r-1;
+count=sum(sum(RBinary(offe:size(RBinary,1)-offe,offe:size(RBinary,2)-offe))); % How many interest points, avoid the image's edge   
 R=R*0;
-R(5:size(R11,1)-5,5:size(R11,2)-5)=R11(5:size(R11,1)-5,5:size(R11,2)-5);
+R(offe:size(RBinary,1)-offe,offe:size(RBinary,2)-offe)=RBinary(offe:size(RBinary,1)-offe,offe:size(RBinary,2)-offe);
 [r1,c1] = find(R);
-PIP=[r1,c1]%% IP , 2d location ie.(u,v)
+PIP=[r1,c1] % IP , 2d location ie.(u,v)
   
 
 %% Display
