@@ -36,7 +36,7 @@ g = fspecial('gaussian',max(1,fix(2*n_x_sigma*sigma)), sigma); % Gaussien Filter
 frame = imread('data/Im.jpg');
 I = double(frame);
 figure(1);
-imshow(frame);
+imagesc(frame);
 [xmax, ymax,ch] = size(I);
 xmin = 1;
 ymin = 1;
@@ -60,7 +60,7 @@ Ixy = conv2(Ix.*Iy, g,'same'); % calculate Ixy
 
 %% visualize Ixy
 figure(2);
-imshow(Ixy);
+imagesc(Ixy);
 
 %%%%%%% Demo Check Point -------------------
 
@@ -74,9 +74,12 @@ R = (Ix2.*Iy2 - Ixy.^2) - alpha*(Ix2 + Iy2).^2;   % calculate R
 %% make R value range from 0 to 1000
 R=(1000/max(max(R)))*R;%
 
+%%%%%
 %% using B = ordfilt2(A,order,domain) to complment a maxfilter
-sze = 2*r+1; 
+sze = 2*r+1; % domain width 
+% [Your Code here] 
 MX = ordfilt2(R,sze^2,ones(sze));
+%%%%%
 
 %%%%%
 % find local maximum.
@@ -91,16 +94,12 @@ count=sum(sum(RBinary(offe:size(RBinary,1)-offe,offe:size(RBinary,2)-offe))); % 
 R=R*0;
 R(offe:size(RBinary,1)-offe,offe:size(RBinary,2)-offe)=RBinary(offe:size(RBinary,1)-offe,offe:size(RBinary,2)-offe);
 [r1,c1] = find(R);
-PIP=[r1,c1] % IP , 2d location ie.(u,v)
+PIP=[r1,c1]; % IP , 2d location ie.(u,v)
   
 
 %% Display
-Size_PI=size(PIP,1);
-for r=1: Size_PI
-   I(PIP(r,1)-2:PIP(r,1)+2,PIP(r,2)-2)=255;
-   I(PIP(r,1)-2:PIP(r,1)+2,PIP(r,2)+2)=255;
-   I(PIP(r,1)-2,PIP(r,2)-2:PIP(r,2)+2)=255;
-   I(PIP(r,1)+2,PIP(r,2)-2:PIP(r,2)+2)=255;
-end
 figure(3)
-imshow(uint8(I))
+imagesc(uint8(I));
+hold on;
+plot(c1,r1,'or');
+return;
