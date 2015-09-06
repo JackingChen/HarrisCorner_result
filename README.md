@@ -1,6 +1,6 @@
 <center>
-<img src="./data/Im.jpg" width="410" height="361">
-<img src="./data/corner.png" width="410" height="361">
+<img src="./data/Im.jpg" width="310" height="261">
+<img src="./data/corner.png" width="310" height="261">
 <br>
 (Left: originla image. Right: image overlap with corners.)
 </center>
