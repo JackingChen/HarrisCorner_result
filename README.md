@@ -8,7 +8,7 @@
 # Project 2: Image Filtering and Corner Detection
 
 ## Brief
-* Due: 10/16/2015 at 8am
+* Due: 11/16/2015 at 8am
 * Required files: many original images and their overlaid corners, and MyHarrisCornerDetector.m
 
 ##Overview
