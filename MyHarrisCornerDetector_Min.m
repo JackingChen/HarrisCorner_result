@@ -10,11 +10,9 @@
 % You can select the number of FPs by changing the variables 
 % max_N & min_N
 
-
 %%%
 %corner : significant change in all direction for a sliding window
 %%%
-
 
 %%
 % parameters
@@ -50,14 +48,14 @@ ymin = 1;
 %%%%%%
 % get image gradient
 % [Your Code here] 
-% calculate Ix
-% calcualte Iy
+Ix = conv2(I(xmin:xmax,ymin:ymax), dx, 'same'); % calculate Ix
+Iy = conv2(I(xmin:xmax,ymin:ymax), dy, 'same'); % calcualte Iy
 %%%%%
 % get all components of second moment matrix M = [[Ix2 Ixy];[Iyx Iy2]]; note Ix2 Ixy Iy2 are all Gaussian smoothed
 % [Your Code here] 
-% calculate Ix2  
-% calculate Iy2
-% calculate Ixy
+Ix2 = conv2(Ix.^2, g, 'same'); % calculate Ix2  
+Iy2 = conv2(Iy.^2, g, 'same'); % calculate Iy2
+Ixy = conv2(Ix.*Iy, g,'same'); % calculate Ixy
 %%%%%
 
 %% visualize Ixy
@@ -70,7 +68,7 @@ imagesc(Ixy);
 %%%%%
 % get corner response function R = det(M)-alpha*trace(M)^2 
 % [Your Code here] 
-% calculate R
+R = (Ix2.*Iy2 - Ixy.^2) - alpha*(Ix2 + Iy2).^2;   % calculate R
 %%%%%
 
 %% make R value range from 0 to 1000
@@ -80,13 +78,13 @@ R=(1000/max(max(R)))*R;%
 %% using B = ordfilt2(A,order,domain) to complment a maxfilter
 sze = 2*r+1; % domain width 
 % [Your Code here] 
-% calculate MX
+MX = ordfilt2(R,sze^2,ones(sze));
 %%%%%
 
 %%%%%
 % find local maximum.
 % [Your Code here] 
-% calculate RBinary
+RBinary = (R==MX)&(R>Thrshold); 
 %%%%%
 
 
