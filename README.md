@@ -5,7 +5,7 @@
 (Left: originla image. Right: image overlap with corners.)
 </center>
 
-# Project 2: Image Filtering and Corner Detection
+# Extrac Project 1: Image Filtering and Corner Detection
 
 ## Brief
 * Due: 11/16/2015 at 8am
