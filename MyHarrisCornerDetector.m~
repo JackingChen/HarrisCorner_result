@@ -23,7 +23,7 @@ sigma=2;
 n_x_sigma = 6;
 alpha = 0.04;
 % maximum suppression related
-Thrshold=200;  % should be between 0 and 1000
+Thrshold=20;  % should be between 0 and 1000
 r=2; 
 
 
@@ -88,14 +88,7 @@ end
 
 %% make R value range from 0 to 1000
 R=(1000/max(max(R)))*R;%
-%filter R
-for i=1:length(R(:,1))
-    for j=1:length(R(1,:))
-        if R(i,j)<Thrshold
-            R(i,j)=0;
-        end
-    end
-end
+for i=1:length(R)
 
 %%%%%
 %% using B = ordfilt2(A,order,domain) to complment a maxfilter

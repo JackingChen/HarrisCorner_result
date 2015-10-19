@@ -12,11 +12,12 @@
 * Required files: many original images and their overlaid corners, and MyHarrisCornerDetector.m
 
 ##Overview
+```
 The goal of this homework is to use image filter to calculate image gradients.
 Then, we combine image gradients and apply Gaussian filter to compute second moment matrix at each pixel location.
-Next, we can compute the corner response function described in our lecture note.
+**_Next_**, we can compute the corner response function described in our lecture note.
 Finally, we apply a threshold and non-maximum suppression to obtain distinctive corner locations.
-
+```
 ## Extra Points
 * +2 pts: If you make your code publicly available.
 * +2 pts: If you comment on pull request from students who fork the homework. <del>Make sure you send me a screenshot of the comments to me.</del> We can follow your discussion ourselves.
