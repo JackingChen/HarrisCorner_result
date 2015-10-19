@@ -15,6 +15,7 @@
 %corner : significant change in all direction for a sliding window
 %%%
 
+%tunable parameter: 1. gradient filter. 2. r 3. threshold
 
 %%
 % parameters
@@ -23,22 +24,26 @@ sigma=2;
 n_x_sigma = 6;
 alpha = 0.04;
 % maximum suppression related
-Thrshold=200;  % should be between 0 and 1000
+Thrshold=150;  % should be between 0 and 1000
 r=2; 
 
 
 %%
 % filter kernels
+% dx = [-1 0 0 0 0 0 1; -1 0 0 0 0 0 1; -1 0 0 0 0 0 1];
+% dx = [-1 0 0 0 1; -1 0 0 0 1; -1 0 0 0 1];
 dx = [-1 0 1; -1 0 1; -1 0 1]; % horizontal gradient filter 
 dy = dx'; % vertical gradient filter
+
+
 g = fspecial('gaussian',max(1,fix(2*n_x_sigma*sigma)), sigma); % Gaussien Filter: filter size 2*n_x_sigma*sigma
 
 
 %% load 'Im.jpg'
 frame = imread('data/Im.jpg');
 I = double(frame);
-figure(1);
-imagesc(frame);
+%figure(1);
+%imagesc(frame);
 [xmax, ymax,ch] = size(I);
 xmin = 1;
 ymin = 1;
@@ -106,10 +111,10 @@ mask=true(sze); mask(floor(sze^2/2)+1)=0;
 
 MX=ordfilt2(R,sze^2-1,mask);
 %%%%%
-figure(3)
-imshow(R)
-figure(4)
-imshow(MX)
+% figure(3)
+% imshow(R)
+% figure(4)
+% imshow(MX)
 %%%%%
 % find local maximum.
 % [Your Code here] 
