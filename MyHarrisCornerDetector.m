@@ -107,7 +107,17 @@ end
 sze = 2*r+1; % domain width 
 % [Your Code here] 
 % calculate MX
-mask=true(sze); mask(floor(sze^2/2)+1)=0;
+mask=true(sze);
+mask(floor(sze^2/2)+1)=0;
+%**********
+% make the mask look like 
+% 111
+% 101
+% 111
+% 
+% All true except false in the middle
+%reference: http://stackoverflow.com/questions/22218037/how-to-find-local-maxima-in-image
+%**********
 
 MX=ordfilt2(R,sze^2-1,mask);
 %%%%%
