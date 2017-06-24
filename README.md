@@ -77,7 +77,7 @@ dx = [-1 0 1; -1 0 1; -1 0 1];
 ```
 result:
 <img src="./results/birdane.jpg" width="24%"/>
-<img src="./results/tune\ gradient\ filter/little.jpg" width="24%"/>
+<img src="./results/tune%20gradient\ filter/little.jpg" width="24%"/>
 <img src="./results/tune\ gradient\ filter/medium.jpg" width="24%"/>
 <img src="./results/tune\ gradient\ filter/large.jpg" width="24%"/>
 disussion: seems that the smallest gradient filter has the best result
